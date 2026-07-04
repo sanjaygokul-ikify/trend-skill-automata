@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "skillautomata"
+version = "0.1.0"
+description = "Distributed skill extraction engine"
+authors = ["You <you@example.com>"]
+readme = "README.md"
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pydantic = "^2.5"
+tomli = "^2.0.1"
+hypothesis = "^6.50.0"
+pytest = "^7.3.1"
+
+[tool.pytest.ini_options]
+addopts = "-ra -m integration"
