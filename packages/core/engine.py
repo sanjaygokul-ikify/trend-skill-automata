@@ -16,7 +16,7 @@ class Engine:
             return patterns
         except Exception as e:
             logging.error(f"Pattern extraction failed: {str(e)}")
-            raise PatternExtractionError("Pattern extraction failed")
+            raise PatternExtractionError("Pattern extraction failed") from e
 
     def compile_rules(self, patterns: List[Pattern]) -> List[Rule]:
         try:
@@ -24,15 +24,15 @@ class Engine:
             return rules
         except Exception as e:
             logging.error(f"Rule compilation failed: {str(e)}")
-            raise EngineError("Rule compilation failed")
+            raise EngineError("Rule compilation failed") from e
 
     def execute_skill(self, skill: Skill, context: Dict) -> bool:
         try:
-            result = self.rule_engine.execute_rule(skill, context)
+            result = self.rule_engine.execute_rule(skill.rules[0], context)
             return result
         except Exception as e:
             logging.error(f"Skill execution failed: {str(e)}")
-            raise EngineError("Skill execution failed")
+            raise EngineError("Skill execution failed") from e
 
 
 class PatternMiner:
