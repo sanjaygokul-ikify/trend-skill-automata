@@ -44,8 +44,9 @@ class PatternMiner:
         patterns = []
         for log in session_logs:
             # Extract patterns from log entries
-            pattern = Pattern(log["action"], log["context"])
-            patterns.append(pattern)
+            if 'action' in log and 'context' in log:
+                pattern = Pattern(log['action'], log['context'])
+                patterns.append(pattern)
         return patterns
 
 
